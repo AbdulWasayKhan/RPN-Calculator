@@ -81,7 +81,8 @@ static void pushInt(struct tokenStack *s, int v)
 	sprintf(token->symbol, "%d", v);
 	pushTokenStack(s,token);
 
-	op_print(s);
+	/*op_print(s);*/
+
 }
 
 int doOperator(struct tokenStack *stack, char *o) 
@@ -120,46 +121,46 @@ static int op_dump(struct tokenStack *stack)
 
 static int op_add(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  pushInt(stack, v1+v2);
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  pushInt(stack, a+b);
   return(0);
 }
 
 static int op_subtract(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  pushInt(stack, v2-v1);
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  pushInt(stack, b-a);
   return(0);
 }
 
 static int op_product(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  pushInt(stack, v1*v2);
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  pushInt(stack, b*a);
   return(0);
 }
 
 static int op_divide(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  pushInt(stack, v2/v1);
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  pushInt(stack, b/a);
   return(0);
 }
 
 static int op_GT(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  if(v2>v1)
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  if(b>a)
     {
        pushInt(stack, 1);
     }
@@ -172,10 +173,10 @@ static int op_GT(struct tokenStack *stack)
 
 static int op_LT(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  if(v2<v1)
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  if(b<a)
     {
        pushInt(stack, 1);
     }
@@ -188,10 +189,10 @@ static int op_LT(struct tokenStack *stack)
 
 static int op_GEQUAL(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  if(v2>=v1)
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  if(b>=a)
     {
        pushInt(stack, 1);
     }
@@ -204,10 +205,10 @@ static int op_GEQUAL(struct tokenStack *stack)
 
 static int op_LEQUAL(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  if(v2<=v1)
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  if(b<=a)
     {
        pushInt(stack, 1);
     }
@@ -220,10 +221,10 @@ static int op_LEQUAL(struct tokenStack *stack)
 
 static int op_EQUAL(struct tokenStack *stack)
 {
-  int v1, v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  if(v2==v1)
+  int a, b;
+  a = popInt(stack);
+  b = popInt(stack);
+  if(b==a)
     {
        pushInt(stack, 1);
     }
@@ -236,21 +237,21 @@ static int op_EQUAL(struct tokenStack *stack)
 
 static int op_MOD(struct tokenStack *stack)
 {
-  int v1;
-  v1 = popInt(stack);
-  pushInt(stack, v1);
-  pushInt(stack, v1);
+  int a;
+  a = popInt(stack);
+  pushInt(stack, a);
+  pushInt(stack, a);
   return(0);
 }
 
 static int op_MODQUOT(struct tokenStack *stack)
 {
-  int v1;
-  int v2;
-  v1 = popInt(stack);
-  v2 = popInt(stack);
-  pushInt(stack, v2%v1);
-  pushInt(stack, v2/v1);
+  int a;
+  int b;
+  a = popInt(stack);
+  b = popInt(stack);
+  pushInt(stack, b%a);
+  pushInt(stack, b/a);
   return(0);
 }
 
